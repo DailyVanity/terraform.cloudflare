@@ -14,6 +14,6 @@ resource "cloudflare_record" "CF_record" {
   type    = each.value.type
   ttl     = 1
   proxied = each.value.proxy
-  priority= each.value.priority
+  priority= lookup(each.value, "priority", null)
   data = lookup(each.value, "data", null)
 }
